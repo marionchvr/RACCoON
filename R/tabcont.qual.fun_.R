@@ -17,15 +17,18 @@
 #' @export
 #'
 #' @examples
-tabcont.qual.fun_ <- function(data, x_all, x2, xall_name, x2_name, nb_dec, pcol=TRUE, plig=TRUE, ptot=TRUE, titre, widths=NULL, test=FALSE){
+tabcont.qual.fun_ <- function(data, x_all, x2, xall_name, x2_name, nb_dec, pcol = TRUE, plig = TRUE,
+                              ptot = TRUE, titre, widths = NULL, test = FALSE){
   tab2 <- tabcont.qual_(data, x_all, x2, xall_name, x2_name, nb_dec, pcol, plig, ptot)
   if(!is.null(tab2)){
-    doc2 <<- addParagraph(doc2, value= titre ,stylename = "rTableLegend")
-    tab = FlexTable(data = tab2, add.rownames = F, header.columns = F, header.par.props = parProperties(text.align = "center"), body.par.props = parProperties(text.align = "center"))
-    tab[,] = textProperties(font.family="Arial", font.size=10)
+    doc2 <<- addParagraph(doc2, value = titre ,stylename = "rTableLegend")
+    tab = FlexTable(data = tab2, add.rownames = F, header.columns = F,
+                    header.par.props = parProperties(text.align = "center"),
+                    body.par.props = parProperties(text.align = "center"))
+    tab[,] = textProperties(font.family = "Arial", font.size = 10)
     if(is.null(widths)){
-      if(sum(is.na(colnames(tab2)))==1){
-        widths <- c(1.1,0.7,rep(1.2,dim(tab2)[2]-4),0.5,1)
+      if(sum(is.na(colnames(tab2))) == 1){
+        widths <- c(1.1,0.7,rep(1.2,dim(tab2)[2] - 4), 0.5, 1)
       } else {
         widths <- c(1.1,0.7,rep(1.2,dim(tab2)[2]-2))
       }
